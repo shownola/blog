@@ -297,7 +297,7 @@ a.btn.home-btn {
 
 .pagebg {
   flex: 1 0 auto;
-  background-color: $coral;
+  background-color: $coral !important;
 }
 .card-title a {
   color: $shadow;
@@ -331,6 +331,18 @@ a.btn.delete-btn {
     background-color: $soy;
     color: #fff;
   }
+}
+.card-form {
+  background-color: $coral !important;
+}
+.danger {
+  color: #9b0000;
+  &:hover {
+    color: red;
+  }
+}
+.description {
+  color: $soy;
 }
 
 

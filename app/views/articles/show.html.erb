@@ -1,8 +1,14 @@
-<h1>Show Article Details</h1>
+
+<div class="container">
+  <div class="display-1 text-center pt-3 title">
+    <%= @article.title %>
+  </div>
+  <p class="pt-5 description"><%= simple_format(@article.description) %></p>
 
 
-  <h2>Title: <%= @article.title %></h2>
-  <p><strong>Description:  </strong><%= @article.description %></p>
-  <p><%= link_to 'Edit', edit_article_path(@article) %> | <%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: 'Are you sure?'} %> | <%= link_to 'All Articles', articles_path %></p>
 
-  <p><%= link_to 'back', articles_path %></p>
+    <p><%= link_to 'Edit', edit_article_path(@article), class: 'links' %> | <%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: 'Are you sure?'}, class: 'danger' %> | <%= link_to 'All Articles', articles_path, class: 'links' %></p>
+
+
+
+</div>

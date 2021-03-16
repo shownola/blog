@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
       flash[:notice] = 'Your article was created successfully'
       redirect_to @article
     else
-      flash[:error] = 'There was an error, please try again'
+      flash.now[:error] = 'There was an error, please try again'
       render 'new'
     end
   end
@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
       flash[:notice] = "Article has been updated"
       redirect_to @article
     else
-      flash[:error] = 'There was an error, please try again!'
+      flash.now[:error] = 'There was an error, please try again!'
       render 'edit'
     end
   end
