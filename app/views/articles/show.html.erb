@@ -3,6 +3,9 @@
   <div class="display-1 text-center pt-3 title">
     <%= @article.title %>
   </div>
+  <div class="font-italic">
+    Created by <%= @article.user.username if @article.user %> <%= time_ago_in_words(@article.created_at) %> ago
+  </div>
   <p class="pt-5 description"><%= simple_format(@article.description) %></p>
 
 
