@@ -1,6 +1,15 @@
-<h1>Editing User</h1>
 
-<%= render 'form', user: @user %>
+<div class="container pt-5">
+  <div class="card shadow mb-5 bg-white rounded new-form">
+    <div class="display-2 text-center title">Edit User</div>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+      <%= render 'form', user: @user %>
+
+      <p>
+        <%= link_to 'View User', @user, class: 'links' %> |
+        <%= link_to 'All Users', users_path, class: 'links' %>
+      </p>
+
+
+    </div>
+</div>

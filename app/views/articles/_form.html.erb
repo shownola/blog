@@ -1,6 +1,6 @@
 <div class="container">
 
-<%= render 'shared/errors' %>
+<%= render 'shared/errors', obj: @article %>
 
 
 <%= form_with(model: @article, local: true) do |f| %>
@@ -14,8 +14,8 @@
     <%= f.text_area :description, class: 'form-control' %>
   </p>
 
-  <p>
-    <%= f.submit class: 'form-group art-btn' %>
+  <p class="text-center">
+    <%= f.submit class: 'form-group art-btn btn-lg' %>
   </p>
 <% end %>
 
