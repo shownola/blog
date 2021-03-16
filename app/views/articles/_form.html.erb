@@ -12,20 +12,20 @@
 
 <%= form_with(model: @article, local: true) do |f| %>
   <p>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.label :title, class: 'form-group' %>
+    <%= f.text_field :title, class: 'form-control' %>
   </p>
 
   <p>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.label :description, class: 'form-group' %>
+    <%= f.text_area :description, class: 'form-control' %>
   </p>
 
   <p>
-    <%= f.submit %>
+    <%= f.submit class: 'form-group art-btn' %>
   </p>
 <% end %>
 
-<p><%= link_to 'All Articles', articles_path %></p>
+<p><%= link_to 'All Articles', articles_path, class: 'links' %></p>
 
 </div>
