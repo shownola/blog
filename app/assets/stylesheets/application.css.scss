@@ -345,6 +345,12 @@ a.btn.delete-btn {
   color: $soy;
 }
 
+.show-footer {
+  background-color: $coral;
+  color: $shadow;
+}
+
+
 
 // .btn-primary {
 //   @include button-variant($coral, darken($coral, 7.5%), darken($coral, 10%), lighten($coral, 5%), lighten($coral, 10%), darken($coral, 30%));
