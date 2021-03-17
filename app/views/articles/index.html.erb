@@ -1,6 +1,18 @@
 
   <div class="container pagebg">
-    <h1 class="text-center mt-4">Articles</h1>
+    <h1 class="text-center mt-4 pt-2 pb-3">Articles</h1>
+
+    <div class="flickr_pagination pb-3">
+      <%= will_paginate @articles, :container => false %>
+    </div>
+
+
 
     <%= render 'article' %>
+
+    <div class="flickr_pagination pb-3">
+      <%= will_paginate @articles, :container => false %>
+    </div>
+
+
   </div>
