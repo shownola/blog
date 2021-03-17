@@ -17,6 +17,15 @@ class ApplicationController < ActionController::Base
     !!current_user  # this makes it a boolean
   end
 
+  def require_user
+    if !logged_in?
+      flash[:alert] = 'You must be logged in to perform this action'
+      redirect_to login_path
+    end
+  end
+
+  
+
 end
 
 module ShownolaViewTool

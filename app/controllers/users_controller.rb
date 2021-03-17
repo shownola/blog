@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update destroy]
+  before_action :require_user, except: %i[show index]
+  before_action :require_same_user, only: %i[edit update destroy]
 
 
   def index
@@ -56,4 +58,13 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :email, :password)
     end
+
+    def require_same_user
+      if current_user != @user
+        flash[:alert] = 'You can only edit your own profile'
+        redirect_to @user
+      end
+    end
+
+      
 end
