@@ -8,10 +8,11 @@
   <div class="gravatar pb-5">
     <%= gravatar_for @user, size: 200 %>
   </div>
-  <div class="text-center pb-4">
-    <%= link_to 'Edit your profile', edit_user_path(@user), class: 'btn edit-btn' %>
-  </div>
-
+  <% if logged_in? && @user == current_user %>
+    <div class="text-center pb-4">
+      <%= link_to 'Edit your profile', edit_user_path(@user), class: 'btn edit-btn' %>
+    </div>
+  <% end %>
   <div class="flickr_pagination pb-3">
     <%= will_paginate @articles, :container => false %>
   </div>
