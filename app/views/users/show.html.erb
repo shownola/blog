@@ -2,11 +2,14 @@
   <div class="display-2 text-center pt-3 title pb-5 pt-5">
     <%= @user.username.capitalize if @user.username %>'s Profile
   </div>
-  <div class="font-italic pb-4">
+  <div class="font-italic pb-4 text-muted">
     Member since  <%= time_ago_in_words(@user.created_at) %> ago
   </div>
   <div class="gravatar pb-5">
     <%= gravatar_for @user, size: 200 %>
+  </div>
+  <div class="text-center pb-4">
+    <%= link_to 'Edit your profile', edit_user_path(@user), class: 'btn edit-btn' %>
   </div>
 
   <%= render 'articles/article' %>

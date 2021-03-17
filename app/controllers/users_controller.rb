@@ -29,15 +29,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: "User was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
+        flash[:notice] = "User was successfully updated."
+        redirect_to @user
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        flash[:error] = 'There was an error, please try again!'
+        render 'edit'
       end
-    end
   end
 
   def destroy
