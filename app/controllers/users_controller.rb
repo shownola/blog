@@ -24,7 +24,7 @@ class UsersController < ApplicationController
         flash[:notice] = "User was successfully updated."
         redirect_to @user
       else
-        flash[:error] = 'There was an error, please try again!'
+        flash[:alert] = 'There was an error, please try again!'
         render 'edit'
       end
   end
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Welcome #{@user.username} You have successfully signed up"
       redirect_to articles_path
     else
-      flash[:error] = "There was an error, please try again"
+      flash[:alert] = "There was an error, please try again"
       render 'new'
     end
   end
