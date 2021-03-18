@@ -3,14 +3,10 @@
     <%= @category.name.capitalize %>
   </div>
 
-  <% if logged_in? && @user == current_user %>
-    <div class="text-center pb-4">
-      <%= link_to 'Edit Category', edit_category_path(@category), class: 'btn edit-btn' %>
-    </div>
-  <% end %>
+  
 
 
-  <%= @category.name %>
+  <h2>Category: <%= @category.name %></h2>
 
 
 

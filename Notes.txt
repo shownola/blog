@@ -1,6 +1,9 @@
 Test Notes:
-You can scaffold test with:
+You can scaffold UNIT test with:
 $ rails g test_unit:scaffold category
+
+Scaffold Integration Test:
+$ rails g integration_test create_category
 
 TEST RESULTS:
 
@@ -100,3 +103,16 @@ AFTER ADDING BLANK CREATE METHOD:
 
 AFTER CREATE METHOD:
   ALL TESTS PASSING!
+
+  INTEGRATION TESTS:
+
+  def setup
+    @category= Category.create(name: 'Sports')
+    @category2= Category.create(name: 'Travel')
+  end
+
+  test 'should show categories listing' do
+    get '/categories'
+    assert_select 'a[href=?]', category_path(@category), text: @category.name
+    assert_select 'a[href=?]', category_path(@category2), text: @category2.name
+  end
