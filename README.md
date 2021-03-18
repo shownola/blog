@@ -1,5 +1,18 @@
 # README
 
+* Rails 6
+
+* User authentication built from scratch(without gems)
+
+* Authorizations built without use of outside gems
+
+* Users signup and login using sessions
+
+* Enabled admin users with permissions
+
+* Gravatar
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
