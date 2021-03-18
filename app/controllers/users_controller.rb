@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy]
   before_action :require_user, except: %i[show index]
-  before_action :require_same_user, only: %i[edit update destroy]
+  before_action :require_same_user, only: %i[edit update]
 
 
   def index
@@ -43,10 +43,9 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    session[:user_id] = nil
+    flash[:notice] = 'Account and associated articles deleted'
+    redirect_to articles_path
   end
 
   private
@@ -66,5 +65,5 @@ class UsersController < ApplicationController
       end
     end
 
-      
+
 end
