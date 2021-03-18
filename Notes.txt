@@ -1,0 +1,102 @@
+Test Notes:
+You can scaffold test with:
+$ rails g test_unit:scaffold category
+
+TEST RESULTS:
+
+  THESE ARE THE INITIAL TESTS:
+  test "should get index" do
+    get categories_url
+    assert_response :success
+  end
+  test "should get new" do
+    get new_category_url
+    assert_response :success
+  end
+  test "should show category" do
+    get category_url(@category)
+    assert_response :success
+  end
+
+BEFORE ROUTES SETUP:
+  CategoriesControllerTest#test_should_get_new:
+  NameError: undefined local variable or method `new_category_url' for #<CategoriesControllerTest:0x00007fcf001f5870>
+  Error:
+  CategoriesControllerTest#test_should_get_index:
+  NameError: undefined local variable or method `categories_url' for #<CategoriesControllerTest:0x00007fcf001f5870>
+
+
+AFTER ROUTES SETUP:
+  Error:
+  CategoriesControllerTest#test_should_get_index:
+  ActionController::RoutingError: uninitialized constant CategoriesController
+  Did you mean?  CategoriesControllerTest
+  Error:
+  CategoriesControllerTest#test_should_get_new:
+  ActionController::RoutingError: uninitialized constant CategoriesController
+  Did you mean?  CategoriesControllerTest
+  Error:
+  CategoriesControllerTest#test_should_show_category:
+  ActionController::RoutingError: uninitialized constant CategoriesController
+  Did you mean?  CategoriesControllerTest
+
+
+    CONTROLLER NOT SETUP YET!!
+
+AFTER CONTROLLER FILE CREATED BUT WITHOUT ANY METHODS:
+  Error:
+  CategoriesControllerTest#test_should_get_new:
+  AbstractController::ActionNotFound: The action 'new' could not be found for CategoriesController
+  Error:
+  CategoriesControllerTest#test_should_get_index:
+  AbstractController::ActionNotFound: The action 'index' could not be found for CategoriesController
+  Error:
+  CategoriesControllerTest#test_should_show_category:
+  AbstractController::ActionNotFound: The action 'show' could not be found for CategoriesController
+
+    NEED TO ADD CONTROLLER METHODS:
+
+AFTER METHODS BUT WITHOUT THE DATA:
+  Error:
+  CategoriesControllerTest#test_should_get_index:
+  ActionController::MissingExactTemplate: CategoriesController#index is missing a template for request formats: text/html
+  Error:
+  CategoriesControllerTest#test_should_show_category:
+  ActionController::MissingExactTemplate: CategoriesController#show is missing a template for request formats: text/html
+  Error:
+  CategoriesControllerTest#test_should_get_new:
+  ActionController::MissingExactTemplate: CategoriesController#new is missing a template for request formats: text/html
+
+    NEED TO SETUP VIEWS:
+
+AFTER VIEW FOLDER AND FILES CREATED:
+
+ALL TESTS PASSING!!!
+
+NOW CREATE THE METHODS IN THE CONTROLLER!
+
+NEW TEST ADDED:
+
+  test "should create category" do
+    assert_difference('Category.count', 1) do
+      post categories_url, params: { category: { name: 'Travel' } }
+    end
+    assert_redirected_to category_url(Category.last)
+  end
+
+RESULT:
+  Error:
+  CategoriesControllerTest#test_should_create_category:
+  AbstractController::ActionNotFound: The action 'create' could not be found for CategoriesController
+      NEED TO ADD CREATE METHOD TO CONTROLLER!
+
+AFTER ADDING BLANK CREATE METHOD:
+  Failure:
+  CategoriesControllerTest#test_should_create_category [/mnt/c/users/sherry/desktop/completeror_MHus/blog/test/controllers/categories_controller_test.rb:19]:
+  "Category.count" didn't change by 1.
+  Expected: 2
+  Actual: 1
+        COMPLETE THE CREATE ACTION IN THE CONTROLLER!
+
+AFTER CREATE METHOD:
+  ALL TESTS PASSING!

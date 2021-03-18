@@ -1,0 +1,14 @@
+<div class="container pb-5">
+  <%= render 'shared/errors', obj: @category %>
+
+  <%= form_with(model: @category, local: true) do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "Category Name", class: 'labels' %>
+      <%= f.text_field :name, class: 'form-control', placeholder: 'Enter name', autofocus: true %>
+    </div>
+
+    <div class="actions text-center">
+      <%= f.submit class: 'art-btn btn-lg' %>
+    </div>
+  <% end %>
+</div>
