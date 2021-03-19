@@ -6,6 +6,14 @@
 
   <div class="gravatar pb-5">
     <%= link_to gravatar_for(@article.user, size: 200), user_path(@article.user) %>
+
+  </div>
+
+  <div class="categories mt-2">
+    <% if @article.categories.any? %>
+      <%= render @article.categories %>
+
+    <% end %>
   </div>
   <div class="font-italic mt-3 text-center">
     <% if @article.user %>
