@@ -6,12 +6,17 @@
 <%= form_with(model: @article, local: true) do |f| %>
   <p>
     <%= f.label :title, class: 'form-group' %>
-    <%= f.text_field :title, class: 'form-control' %>
+    <%= f.text_field :title, class: 'form-control shadow rounded' %>
   </p>
 
   <p>
     <%= f.label :description, class: 'form-group' %>
-    <%= f.text_area :description, class: 'form-control' %>
+    <%= f.text_area :description, class: 'form-control shadow rounded' %>
+  </p>
+
+  <p>
+    <%= f.label :category, class: 'form-group' %>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, {prompt: 'Make your selections (can be empty)'}, {multiple: true, size: 6, class: 'custom-select shadow rounded'}) %>
   </p>
 
   <p class="text-center">

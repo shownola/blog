@@ -116,3 +116,18 @@ AFTER CREATE METHOD:
     assert_select 'a[href=?]', category_path(@category), text: @category.name
     assert_select 'a[href=?]', category_path(@category2), text: @category2.name
   end
+
+
+NOTES ON MANY TO MANY ASSOCATIONS:
+
+article = Article.new(title: 'Some title', description: 'some description', user: User.last, category_ids: [1, 2])
+   (1.5ms)  SELECT sqlite_version(*)
+  User Load (0.6ms)  SELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?  [["LIMIT", 1]]
+  Category Load (0.7ms)  SELECT "categories".* FROM "categories" WHERE "categories"."id" IN (?, ?)  [["id", 1], ["id", 2]]
+ => #<Article id: nil, title: "Some title", description: "some description", created_at: nil, updated_at: nil, user_id: 14>
+ article.valid?
+  Category Exists? (0.6ms)  SELECT 1 AS one FROM "categories" WHERE "categories"."name" = ? AND "categories"."id" != ? LIMIT ?  [["name", "Sports"], ["id", 1], ["LIMIT", 1]]
+  Category Exists? (0.5ms)  SELECT 1 AS one FROM "categories" WHERE "categories"."name" = ? AND "categories"."id" != ? LIMIT ?  [["name", "Travel"], ["id", 2], ["LIMIT", 1]]
+ => true
+
+IMPORTANT THING TO NOTE IS THAT WHEN CREATING THE ARTICLE WITH THE ASSOCIATION YOU MUST USER "IDS"  ie. category_ids: [1, 2].  Otherwise you will get an error.
