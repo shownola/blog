@@ -3,10 +3,22 @@
     <%= @category.name.capitalize %>
   </div>
 
-  
+  <% if logged_in? && @user == current_user.admin? %>
+    <div class="text-center pb-4">
+      <%= link_to 'Edit Category Name', edit_category_path(@category), class: 'btn edit-btn' %>
+    </div>
+  <% end %>
+  <div class="flickr_pagination pb-3">
+    <%= will_paginate @articles, :container => false %>
+  </div>
+
+  <%= render 'articles/article' %>
+
+  <div class="flickr_pagination pb-3">
+    <%= will_paginate @articles, :container => false %>
+  </div>
 
 
-  <h2>Category: <%= @category.name %></h2>
 
 
 
