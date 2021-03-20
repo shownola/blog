@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[show edit]
+  before_action :set_category, only: %i[show edit update]
   before_action :require_admin, except: %i[index show]
 
   def index
@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     if @category.save
       flash[:notice] = 'A new category has been created'
-      redirect_to category_path(@category)
+      redirect_to @category
     else
       flash.now[:alert] = 'There was an error, try again!'
       render 'new'
@@ -26,6 +26,16 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @category.update(category_params)
+      flash[:notice] = 'Category has been updated'
+      redirect_to @category
+    else
+      flash.now[:alert] = 'There was an error updating the cateogory'
+      render 'edit'
+    end
   end
 
   private

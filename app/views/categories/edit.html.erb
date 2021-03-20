@@ -1,0 +1,11 @@
+<div class="container pt-5">
+  <div class="card shadow mb-5 bg-white rounded new-form">
+    <div class="display-2 text-center title">Edit Category</div>
+
+      <%= render 'form' %>
+
+      <p><%= link_to 'Cancel and Return to Category', categories_path(@category), class: 'links pl-3' %></p>
+
+      <p><%= link_to 'All Categories', categories_path, class: 'links pl-3' %></p>
+    </div>
+</div>
