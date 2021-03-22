@@ -29,8 +29,29 @@
 <% end %> |
       <%= link_to 'All Articles', articles_path, class: 'links' %></p>
 
-
-
 </div>
+
+<hr>
+<div class="container">
+  <% if @article.comments != 0 %>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h3>Prior Comments</h3>
+        <div id="messages">
+          <%= render partial: 'comments/comments', object: @comments %>
+        </div>
+      </div>
+    </div>
+
+  <% else %>
+  div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h3>No Comments Yet!</h3>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+
 
 <div class="show-footer"><%= render 'layouts/footer' %></div>

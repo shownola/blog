@@ -8,14 +8,14 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @comments = @article.comments.paginate(page: params[:page], per_page: 5)
   end
 
   def new
     @article = Article.new
   end
 
-  def create    
+  def create
     @article = Article.new(article_params)
     #@article.user = User.first
     @article.user = current_user
