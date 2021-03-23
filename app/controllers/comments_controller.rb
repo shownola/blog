@@ -6,11 +6,12 @@ class CommentsController < ApplicationController
     @comment = @article.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
-      flash[:notice] = 'Comment created'
-      redirect_to article_path(@article)
+      ActionCable.server.broadcast 'comments', render(partial: 'comments/comment', object: @comment)
+      # flash[:notice] = 'Comment created'
+      # redirect_to article_path(@article)
     else
       flash[:alert] = 'Comment not created'
-      redirect_back fallback_location: 'articles/show'      
+      redirect_back fallback_location: 'articles/show'
     end
   end
 

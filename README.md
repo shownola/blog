@@ -20,6 +20,6 @@ This is a blogging app with the following features:
 
 * Many to Many associations using select forms
 
-* ##Comments feature
+* COMMENTS feature
 
-* ##Live Chat## feature
+* LIVE CHAT feature using Action Cable. The communication is handled by Javascript wrappers for web sockets on both ends
