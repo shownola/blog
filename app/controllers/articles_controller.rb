@@ -8,7 +8,9 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
     @comments = @article.comments.paginate(page: params[:page], per_page: 5)
+    #@comment = @article.comments.build
   end
 
   def new
@@ -60,7 +62,7 @@ class ArticlesController < ApplicationController
   def require_same_user
     if current_user != @article.user && !current_user.admin?
       flash[:alert] = 'You can only edit and delete your own articles'
-      redirect_to @article
+      redirect_to articles_path
     end
   end
 

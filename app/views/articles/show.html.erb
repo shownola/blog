@@ -4,7 +4,7 @@
     <%= @article.title %>
   </div>
 
-  <div class="gravatar pb-5">
+  <div class="gravatar pt-4 pb-5">
     <%= link_to gravatar_for(@article.user, size: 200), user_path(@article.user) %>
 
   </div>
@@ -28,9 +28,24 @@
     <p><%= link_to 'Edit', edit_article_path(@article), class: 'links' %> | <%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: 'Are you sure?'}, class: 'danger' %>
 <% end %> |
       <%= link_to 'All Articles', articles_path, class: 'links' %></p>
-
 </div>
+<hr>
 
+<% if logged_in? %>
+<div class="container">
+<h3>Comments</h3>
+<hr>
+<%= form_for([@article, @comment], remote: true) do |f| %>
+  <p>
+    <%= f.label :description, 'Comment', class: 'form-group' %>
+    <%= f.text_area :description, rows: 5, placeholder: 'Enter your comment', class: 'form-control shadow rounded' %>
+  </p>
+  <p class="text-center">
+    <%= f.submit 'Submit Comment', class: 'form-group art-btn btn-lg' %>
+  </p>
+<% end %>
+<% end %>
+</div>
 <hr>
 <div class="container">
   <% if @article.comments != 0 %>

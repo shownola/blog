@@ -13,12 +13,17 @@
       <h5 class="card-title"><%= link_to article.title, article_path(article) %></h5>
       <p class="card-text"><%= truncate(article.description, length: 250) %></p>
       <%= link_to 'Article', article_path(article), class: 'btn card-btn ' %>
+
+
+
     <% if logged_in? && (article.user == current_user || current_user.admin?) %>
       <%= link_to 'Edit', edit_article_path(article), class: 'btn edit-btn ' %>
       <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn delete-btn ' %>
     <% end %>
     </div>
-    <div class="card-footer text-muted"><small>Created <%= time_ago_in_words(article.created_at) %> ago, edited <%= time_ago_in_words(article.updated_at) %> ago</small></div>
+    <div class="card-footer text-muted"><small>Created <%= time_ago_in_words(article.created_at) %> ago, edited <%= time_ago_in_words(article.updated_at) %> ago</small> | 
+    <%= pluralize(article.comments.count, 'Comment') %>
+    </div>
   </div>
   <div class="mb-3"></div>
 <% end %>
