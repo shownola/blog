@@ -1,0 +1,15 @@
+
+<div class="message">
+  <p class="float-left pr-2"> <%= gravatar_for(message.user, size: 50, id: 'chat-atar') %></p>
+  <p>
+    <small><em>Created <%= time_ago_in_words(message.created_at) %> ago by </em></small>
+  </p>
+
+  <p>
+
+    <strong><%= message.user.username.capitalize %></strong>
+    <span class="content">
+      <%= message.content %>
+    </span>
+  </p>
+</div>
