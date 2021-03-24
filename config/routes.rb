@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :categories, except: [:destroy]
 
   mount ActionCable.server => '/cable'
+  get '/chat', to: 'chatrooms#show'
 
 
 end
