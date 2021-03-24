@@ -17,3 +17,14 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 import 'bootstrap/dist/js/bootstrap'
 import 'bootstrap/dist/css/bootstrap'
+
+
+function scrollToBottom(){
+  if($('#messages').length > 0){
+    $('messages').scrollTop($('#messages')[0].scrollHeight);
+  }
+}
+
+$(document).ready(function(){
+  scrollToBottom();
+})

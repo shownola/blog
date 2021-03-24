@@ -361,6 +361,36 @@ a.btn.delete-btn {
 #chat-atar {
   float: left !important;
 }
+.center-block {
+  float: none;
+}
+.chat-container {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 150px;
+  width: 80;
+}
+.message-container {
+  .form-control {
+    float: left;
+    width: 80%;
+  }
+}
+.message {
+  padding-left: 5px;
+  padding-top: 10px;
+}
+.messages {
+  border: 1px solid #eaeaea;
+  height: 16em;
+  position: relative;
+  overflow: auto;
+}
+.chat-btn {
+  height: 3.75rem;
+  padding-left: 2.5rem;
+}
 
 
 // .btn-primary {
