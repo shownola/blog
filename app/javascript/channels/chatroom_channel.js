@@ -19,16 +19,19 @@ consumer.subscriptions.create("ChatroomChannel", {
 
 });
 
-// function scrollToBottom(){
-//   if($('#messages').length > 0){
-//     $('messages').scrollTop($('#messages')[0].scrollHeight);
-//   }
-// }
 
-function scrollToBottom(){
-  if($("#messages").length > 0){
-    last_message = $("#messages")[0];
-    last_message.scrollTop = last_message.scrollHeight - (last_message.clientHeight);
-    return
-  }
-}
+
+var scrollToBottom = function() {
+    if ($('#messages').length > 0) {
+      const last_message = $('#messages')[0];
+      last_message.scrollTop = last_message.scrollHeight - (last_message.clientHeight);
+      return;
+    }
+  };
+
+  jQuery(document).on('turbolinks:load', function() {
+  scrollToBottom();
+  });
+
+
+// $(".scroll").scrollTop($(".scroll")[0].scrollHeight);
