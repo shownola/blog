@@ -1,14 +1,16 @@
 class MessagesController < ApplicationController
   before_action :require_user
 
+
   def create
     @message = Message.new(message_params)
     @message.user = current_user
     if @message.save
       ActionCable.server.broadcast 'chatroom_channel', message: render_message(@message), user: @message.user.username
+      
     else
       flash[:alert] = 'Message not sent'
-      #render 'chatrooms/show'
+      # render 'chatrooms/show'
       redirect_back fallback_location: 'chatrooms/show'
     end
   end

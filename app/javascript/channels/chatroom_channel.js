@@ -19,6 +19,11 @@ consumer.subscriptions.create("ChatroomChannel", {
 
 });
 
+$('#send').keypress(function(e){
+  if(e.which == 13){
+    $(this).closed('form').submit();
+  }
+});
 
 
 var scrollToBottom = function() {
