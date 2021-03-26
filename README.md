@@ -25,3 +25,8 @@ This is a blogging app with the following features:
 * LIVE CHAT feature using Action Cable. The communication is handled by Javascript wrappers for web sockets on both ends
 
 * Redis used in production
+
+* To test as Admin: 
+    login as Admin: 
+    email: admin@email.com 
+    password: adminpassword
